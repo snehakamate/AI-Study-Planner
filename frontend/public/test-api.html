@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test</title>
+</head>
+<body>
+    <h1>API Test</h1>
+    <button onclick="testAPI()">Test API</button>
+    <div id="result"></div>
+
+    <script>
+        async function testAPI() {
+            const testData = {
+                "failures": 0,
+                "higher": 1,
+                "absences": 2,
+                "freetime": 4,
+                "goout": 3,
+                "famrel": 4,
+                "famsup": 1,
+                "schoolsup": 0,
+                "paid": 0,
+                "traveltime": 2,
+                "health": 4,
+                "internet": 1,
+                "age": 18
+            };
+
+            try {
+                console.log("Testing API...");
+                const response = await fetch("https://study-time-predicter-api-1.onrender.com/predict", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(testData),
+                });
+
+                console.log("Response status:", response.status);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log("API Response:", data);
+                    document.getElementById("result").innerHTML = `
+                        <h3>Success!</h3>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                } else {
+                    const errorText = await response.text();
+                    console.error("API Error:", errorText);
+                    document.getElementById("result").innerHTML = `
+                        <h3>Error: ${response.status}</h3>
+                        <pre>${errorText}</pre>
+                    `;
+                }
+            } catch (error) {
+                console.error("Fetch error:", error);
+                document.getElementById("result").innerHTML = `
+                    <h3>Fetch Error</h3>
+                    <pre>${error.message}</pre>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
+

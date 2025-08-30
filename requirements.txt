@@ -1,0 +1,10 @@
+Flask
+pandas
+requests
+schedule
+python-dotenv
+python-docx
+PyPDF2
+gunicorn
+flask_cors
+groq

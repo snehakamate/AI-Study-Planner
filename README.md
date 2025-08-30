@@ -20,7 +20,7 @@ A web application that helps users plan and optimize their AI learning journey. 
 ## External API Integration
 This application uses the external study time prediction API:
 - **Endpoint**: `https://study-time-predicter-api-1.onrender.com/predict`
--**GithubLink of API **:'https://github.com/SurajKothule/study-time-predicter-API.git'
+-**GithubLink of API **:'https://github.com/snehakamate/study-time-predicter-API.git'
 
 - **Features**: Advanced ML model with comprehensive student data analysis
 - **Response**: Predicted study time, confidence level, influencing factors, and recommendations
